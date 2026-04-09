@@ -8,7 +8,13 @@ Electron desktop wrapper around noVNC with support for:
 
 ## Download
 
-- [Releases](https://github.com/all-completed/no-vnc-desktop/releases)
+- [macOS x64](https://github.com/all-completed/no-vnc-desktop/releases/latest/download/noVNC-Desktop-1.0.0-macos-x64.zip)
+- [macOS arm64](https://github.com/all-completed/no-vnc-desktop/releases/latest/download/noVNC-Desktop-1.0.0-macos-arm64.zip)
+- [Windows x64](https://github.com/all-completed/no-vnc-desktop/releases/latest/download/noVNC-Desktop-Setup-1.0.0-windows-x64.exe)
+- [Windows arm64](https://github.com/all-completed/no-vnc-desktop/releases/latest/download/noVNC-Desktop-Setup-1.0.0-windows-arm64.exe)
+- [Linux Snap x64](https://github.com/all-completed/no-vnc-desktop/releases/latest/download/no-vnc-desktop_1.0.0_amd64.snap)
+- [Linux Snap arm64](https://github.com/all-completed/no-vnc-desktop/releases/latest/download/no-vnc-desktop_1.0.0_arm64.snap)
+- [All releases](https://github.com/all-completed/no-vnc-desktop/releases)
 - [Build artifacts](https://github.com/all-completed/no-vnc-desktop/actions/workflows/build-client.yml)
 
 ## Requirements
