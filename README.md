@@ -17,6 +17,27 @@ Electron desktop wrapper around noVNC with support for:
 - [All releases](https://github.com/all-completed/no-vnc-desktop/releases)
 - [Build artifacts](https://github.com/all-completed/no-vnc-desktop/actions/workflows/build-client.yml)
 
+### macOS: app from GitHub won’t open
+
+Release builds are **not signed with an Apple Developer ID** and are **not notarized**, so Gatekeeper may block them after download (browser adds a quarantine flag). The app itself is fine; macOS is refusing to run unsigned software from the internet.
+
+**Option A — remove quarantine, then open normally**
+
+```bash
+xattr -cr "/full/path/to/noVNC Desktop.app"
+open "/full/path/to/noVNC Desktop.app"
+```
+
+**Option B — first launch only**
+
+Right-click `noVNC Desktop.app` → **Open** → confirm **Open** in the dialog.
+
+**Option C**
+
+**System Settings → Privacy & Security** — if macOS shows that the app was blocked, use **Open Anyway** for that app.
+
+To ship builds that open without these steps, you need an Apple Developer account, **Developer ID Application** signing, and **notarization** (configure in `electron-builder` / Xcode).
+
 ## Requirements
 
 - Node.js 18+
