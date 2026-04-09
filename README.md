@@ -6,6 +6,11 @@ Electron desktop wrapper around noVNC with support for:
 - `vnc://host[:port]` raw TCP connections through Electron
 - clipboard copy/paste between local system and remote session
 
+## Download
+
+- [Releases](https://github.com/all-completed/no-vnc-desktop/releases)
+- [Build artifacts](https://github.com/all-completed/no-vnc-desktop/actions/workflows/build-client.yml)
+
 ## Requirements
 
 - Node.js 18+
