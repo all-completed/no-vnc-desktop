@@ -39,10 +39,14 @@ jobs:
             os: ubuntu-latest
             artifact_name: no-vnc-desktop-linux-snap-x64
             builder_args: --linux snap --x64
+            snapcraft_build_environment: ""
+            use_system_fpm: ""
           - name: Linux snap arm64
             os: ubuntu-24.04-arm
             artifact_name: no-vnc-desktop-linux-snap-arm64
             builder_args: --linux snap --arm64
+            snapcraft_build_environment: host
+            use_system_fpm: "true"
 
     env:
       CSC_IDENTITY_AUTO_DISCOVERY: "false"
@@ -65,6 +69,9 @@ jobs:
         run: npm run build
 
       - name: Package Electron app
+        env:
+          SNAPCRAFT_BUILD_ENVIRONMENT: ${{ matrix.snapcraft_build_environment }}
+          USE_SYSTEM_FPM: ${{ matrix.use_system_fpm }}
         run: npx electron-builder ${{ matrix.builder_args }} --publish never
 
       - name: Upload artifacts
