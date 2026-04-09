@@ -116,6 +116,20 @@
       #status.status-error {
         color: #f07178;
       }
+      #toolbar a.toolbar-link {
+        color: var(--text);
+        font-size: 1rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        text-decoration: none;
+        white-space: nowrap;
+        padding-right: 0.75rem;
+      }
+      #toolbar a.toolbar-link:hover {
+        color: #ffffff;
+        text-decoration: underline;
+      }
       #screen-wrap {
         position: relative;
         flex: 1 1 auto;
@@ -136,6 +150,14 @@
   </head>
   <body>
     <div id="toolbar">
+      <a
+        class="toolbar-link"
+        href="https://github.com/all-completed/"
+        target="_blank"
+        rel="noreferrer"
+      >
+        ALL COMPLITED
+      </a>
       <label id="address-fields" class="grow">
         Address:
         <input
