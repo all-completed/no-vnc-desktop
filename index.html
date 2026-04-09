@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self' data: blob:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' blob:; connect-src 'self' http://localhost:5173 https: wss: ws: data:; img-src 'self' data: blob:;"
+    />
+    <title>noVNC Desktop</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        --bg: #121418;
+        --panel: #1c2028;
+        --border: #2a3140;
+        --text: #e8eaef;
+        --muted: #8b93a5;
+        --accent: #4f8cff;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0;
+        height: 100%;
+        font-family: system-ui, -apple-system, Segoe UI, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+      }
+      body {
+        display: flex;
+        flex-direction: column;
+        min-height: 0;
+        overflow: hidden;
+      }
+      #toolbar {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        align-items: center;
+        padding: 0.5rem 0.75rem;
+        background: var(--panel);
+        border-bottom: 1px solid var(--border);
+        flex: 0 0 auto;
+        position: relative;
+        z-index: 10;
+        pointer-events: auto;
+      }
+      #toolbar label {
+        font-size: 0.75rem;
+        color: var(--muted);
+        display: flex;
+        flex-direction: column;
+        gap: 0.15rem;
+      }
+      #toolbar label#address-fields {
+        flex-direction: row;
+        align-items: center;
+        gap: 0.4rem;
+        flex-wrap: nowrap;
+        font-size: 0.875rem;
+      }
+      #toolbar input[type='text'],
+      #toolbar input[type='number'],
+      #toolbar select {
+        min-width: 8rem;
+        padding: 0.35rem 0.5rem;
+        border-radius: 6px;
+        border: 1px solid var(--border);
+        background: var(--bg);
+        color: var(--text);
+        font-size: 0.875rem;
+      }
+      #address {
+        min-width: 14rem;
+        flex: 1;
+      }
+      #toolbar button {
+        padding: 0.4rem 0.75rem;
+        border-radius: 6px;
+        border: 1px solid var(--border);
+        background: #2a3142;
+        color: var(--text);
+        font-size: 0.875rem;
+        cursor: pointer;
+      }
+      #toolbar button.primary {
+        background: var(--accent);
+        border-color: #3d74d9;
+        color: #fff;
+      }
+      #toolbar button:disabled {
+        opacity: 0.45;
+        cursor: not-allowed;
+      }
+      .grow {
+        flex: 1;
+        min-width: 10rem;
+      }
+      #status {
+        font-size: 0.8rem;
+        margin-left: auto;
+        min-width: 10rem;
+        flex-shrink: 0;
+        max-width: 100%;
+        color: var(--muted);
+      }
+      #status.status-connecting {
+        color: #c9a227;
+      }
+      #status.status-connected {
+        color: #6bcf7f;
+      }
+      #status.status-error {
+        color: #f07178;
+      }
+      #screen-wrap {
+        position: relative;
+        flex: 1 1 auto;
+        min-height: 0;
+        touch-action: none;
+        overflow: hidden;
+        isolation: isolate;
+        z-index: 0;
+      }
+      #screen {
+        width: 100%;
+        height: 100%;
+      }
+      .hidden {
+        display: none !important;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="toolbar">
+      <label id="address-fields" class="grow">
+        Address:
+        <input
+          id="address"
+          type="text"
+          spellcheck="false"
+          placeholder="wss://host:6080/path · ws://… · vnc://host:5900"
+          autocomplete="off"
+        />
+      </label>
+      <button type="button" id="btn-connect" class="primary">Connect</button>
+      <button type="button" id="btn-paste" title="Paste from system clipboard into the remote session">Paste</button>
+      <span id="status"></span>
+    </div>
+    <div id="screen-wrap">
+      <div id="screen"></div>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
