@@ -68,6 +68,10 @@ jobs:
       - name: Build web bundle
         run: npm run build
 
+      - name: Install snapcraft for Linux arm64 snap builds
+        if: ${{ matrix.name == 'Linux snap arm64' }}
+        run: sudo snap install snapcraft --classic
+
       - name: Package Electron app
         env:
           SNAPCRAFT_BUILD_ENVIRONMENT: ${{ matrix.snapcraft_build_environment }}
