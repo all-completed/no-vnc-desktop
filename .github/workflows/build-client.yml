@@ -70,7 +70,9 @@ jobs:
 
       - name: Install snapcraft for Linux arm64 snap builds
         if: ${{ matrix.name == 'Linux snap arm64' }}
-        run: sudo snap install snapcraft --classic
+        run: |
+          sudo apt-get update
+          sudo snap install snapcraft --classic
 
       - name: Package Electron app
         env:
@@ -79,7 +81,7 @@ jobs:
         run: npx electron-builder ${{ matrix.builder_args }} --publish never
 
       - name: Upload artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: ${{ matrix.artifact_name }}
           path: |
